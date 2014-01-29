@@ -1,0 +1,8 @@
+interval: 50
+format: "&c&l[WARNING] {MESSAGE} Please don't log out!"
+messages:
+  "login.minecraft.net": "The Minecraft login servers are currently offline."
+  "session.minecraft.net": "The Minecraft session servers are currently offline."
+  "auth.mojang.com": "The Minecraft login servers are currently offline."
+  "authserver.mojang.com": "The Minecraft login servers are currently offline."
+  "sessionserver.mojang.com": "The Minecraft session servers are currently offline."

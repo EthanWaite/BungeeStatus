@@ -1,0 +1,5 @@
+name: BungeeStatus
+version: 0.1
+author: Dead-i
+main: io.github.dead_i.bungeestatus.Main
+depends: [BungeeYAML]
