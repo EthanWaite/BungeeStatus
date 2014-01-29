@@ -36,7 +36,6 @@ public class Main extends ConfigurablePlugin {
 
                     JsonParser parser = new JsonParser();
                     JsonArray json = parser.parse(status).getAsJsonArray();
-                    json.get(0);
                     for (Object obj : json) {
                         Map.Entry<String, JsonElement> entry  = parser.parse(obj.toString()).getAsJsonObject().entrySet().iterator().next();
                         if (entry.getValue().getAsString().equals("green")) {
