@@ -42,7 +42,10 @@ public class Main extends ConfigurablePlugin {
                             servers.put(entry.getKey(), true);
                         }else if (!servers.containsKey(entry.getKey()) || servers.get(entry.getKey())) {
                             servers.put(entry.getKey(), false);
-                            getProxy().broadcast(new TextComponent(ChatColor.translateAlternateColorCodes('&', getConfig().getString("format").replace("{MESSAGE}", getConfig().getString("messages." + entry.getKey())))));
+                            getLogger().info(entry.getKey() + " has gone offline.");
+                            if (getConfig().contains("messages." + entry.getKey())) {
+                                getProxy().broadcast(new TextComponent(ChatColor.translateAlternateColorCodes('&', getConfig().getString("format").replace("{MESSAGE}", getConfig().getString("messages." + entry.getKey())))));
+                            }
                         }
                     }
                 } catch (MalformedURLException e) {
