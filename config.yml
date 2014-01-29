@@ -1,5 +1,10 @@
-interval: 50
-format: "&c&l[WARNING] {MESSAGE} Please don't log out!"
+# Time in seconds between checks to status.mojang.com
+interval: 60
+
+# Base format to use for every sent message.
+format: "&c&l[WARNING]&r {MESSAGE} Please don't log out!"
+
+# Messages for each server. Each entry can be deleted as required.
 messages:
   "login.minecraft.net": "The Minecraft login servers are currently offline."
   "session.minecraft.net": "The Minecraft session servers are currently offline."
