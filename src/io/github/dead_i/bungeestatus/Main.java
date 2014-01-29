@@ -21,6 +21,8 @@ public class Main extends ConfigurablePlugin {
     public void onEnable() {
         getLogger().info("BungeeStatus Mojang Server Monitor is enabled.");
         saveDefaultConfig();
+
+        long interval = getConfig().getLong("interval");
         getProxy().getScheduler().schedule(this, new Runnable() {
             Map<String, Boolean> servers = new HashMap<String, Boolean>();
             @Override
@@ -50,6 +52,6 @@ public class Main extends ConfigurablePlugin {
                     getLogger().warning("Failed to reach the Mojang status page.");
                 }
             }
-        }, getConfig().getLong("interval"), TimeUnit.SECONDS);
+        }, interval, interval, TimeUnit.SECONDS);
     }
 }
