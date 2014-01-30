@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Main extends ConfigurablePlugin {
+    private JsonParser parser = new JsonParser();
+
     public void onEnable() {
         getLogger().info("BungeeStatus Mojang Server Monitor is enabled.");
         saveDefaultConfig();
@@ -34,14 +36,13 @@ public class Main extends ConfigurablePlugin {
                     reader.close();
                     input.close();
 
-                    JsonParser parser = new JsonParser();
                     JsonArray json = parser.parse(status).getAsJsonArray();
                     for (Object obj : json) {
                         Map.Entry<String, JsonElement> entry  = parser.parse(obj.toString()).getAsJsonObject().entrySet().iterator().next();
                         if (entry.getValue().getAsString().equals("green")) {
-                            servers.put(entry.getKey(), true);
+                            servers.put(entry.getKey(), Boolean.TRUE);
                         }else if (!servers.containsKey(entry.getKey()) || servers.get(entry.getKey())) {
-                            servers.put(entry.getKey(), false);
+                            servers.put(entry.getKey(), Boolean.FALSE);
                             getLogger().info(entry.getKey() + " has gone offline.");
                             if (getConfig().contains("messages." + entry.getKey())) {
                                 getProxy().broadcast(new TextComponent(ChatColor.translateAlternateColorCodes('&', getConfig().getString("format").replace("{MESSAGE}", getConfig().getString("messages." + entry.getKey())))));
